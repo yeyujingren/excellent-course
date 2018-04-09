@@ -1,0 +1,13 @@
+
+.r-main .group{
+  padding-bottom: 10px;
+  height: auto;
+}
+.r-main .group .course-info{
+  height: 80px;
+  padding-top: 10px;
+}
+
+.r-main .group .course-info div{
+  margin-top: 10px;
+}

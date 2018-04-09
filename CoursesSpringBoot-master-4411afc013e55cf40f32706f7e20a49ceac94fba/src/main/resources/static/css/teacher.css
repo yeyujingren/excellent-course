@@ -1,0 +1,61 @@
+body{
+  background-color: #f3f3f3;
+}
+.teachers{
+  width: 80%;
+  height: auto;
+  margin: 80px auto;
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 45px;
+}
+.teachers h3{
+  font-size: 21px;
+  font-weight: 600;
+  color: #50aef8;
+  margin-left: 125px;
+}
+.teachers .line{
+  width: 91px;
+  height: 3px;
+  background-color: #008bf5;
+  margin-left: 127px;
+}
+.teachers .g-teachers{
+  width: 80%;
+  height: auto;
+  margin: 50px auto;
+}
+.teachers .g-teachers .groups h3{
+  font-size: 18px;
+  font-weight: 600;
+  color: #1b7ac7;
+  margin-left: 90px;
+}
+ul{
+  padding-left: 90px;
+}
+/*.teachers .g-teachers .groups ul li:after{*/
+  /*content: '';*/
+  /*clear:both;*/
+  /*display: none;*/
+/*}*/
+.teachers .g-teachers .groups ul li{
+  margin-top: 20px;
+  list-style: none;
+  float: left;
+  margin-left: 25px;
+  font-family: 'Arial Normal', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #606060;
+  text-align: center;
+  line-height: normal;
+}
+.clear{
+  clear:both;
+}
+.groups{
+  margin-top: 70px;
+}

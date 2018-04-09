@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <script type="text/javascript">
+
+        function upload() {
+
+            var formData = new FormData($( "#uploadForm" )[0]);
+
+            console.log("ddddd");
+
+            $.ajax({
+                url: '/file/pic',
+                type: 'post',
+                timeout: 5000,
+                contentType: false,
+                processData: false,
+                async: false,
+                cache: false,
+                data:formData,
+            })
+
+                .done(function (data) {
+
+                    console.log(data);
+                    $("#showPicture").attr("src",data.data.url);
+
+                    bindingFunction(data.data.id);
+                    //35da96aaa8244304a87d8dc92dfae4be
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
+        }
+        
+        function bindingFunction(picture_id) {
+            $.ajax({
+                url: '/uploadTeacherPicture',
+                type: 'post',
+                dataType: 'json',
+                timeout: 5000,
+                contentType: 'application/json; charset=UTF-8',
+                cache: false,
+                data:JSON.stringify({
+                    "teacher_id": "7cbdb365b5e145ea98dfdcd5f84182ac",
+                    "picture_id":picture_id.toString()
+                }),
+            })
+
+                .done(function (data) {
+
+                    alert(data.message);
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }
+
+    </script>
+
+
+</head>
+<body>
+<form id="uploadForm" method="post" enctype="multipart/form-data">
+    <input type="file" id="file" name="file"/>
+    <input type="button" onclick="upload()" value="点此上传"/>
+</form>
+<img id="showPicture" src="" width="200px" height="280px"/>
+
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+body{
+  background-color: #f3f3f3;
+}
+.teachers{
+  width: 80%;
+  height: auto;
+  margin: 80px auto;
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 130px;
+}
+.teachers h3{
+  font-size: 21px;
+  font-weight: 600;
+  color: #2466a7;
+  margin-left: 125px;
+}
+.teachers .t-person{
+  margin: 30px auto;
+  display: block;
+  width: 80%;
+  height: 270px;
+}
+.teachers .t-person .p-left{
+  width: 20%;
+  height: 250px;
+  float: left;
+  margin-right: 3%;  
+  /* text-align: center; */
+  position: relative;
+}
+.teachers .t-person .p-left img{
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  left:50%;
+  margin-left: -75px;
+}
+.teachers .t-person .p-left p{
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 230px;
+}
+.teachers .t-person .p-right{
+  width: 77%;
+  height: 270px;
+  float: left;
+}
+.teachers .t-person .p-right ul li{
+  width: 50%;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #606060;
+  line-height: 40px;
+  float: left;
+  list-style: none;
+}
+.intro{
+  font-weight: 400;   
+  font-size: 15px;
+  margin-left: 125px;
+  word-wrap:break-word;
+  padding-right: 25px;
+}
+.classes li{
+  font-size: 14px;
+  font-weight: 500;
+  margin-left:150px ;
+  float: left;
+  list-style: none;
+  line-height: 30px;
+}
+
