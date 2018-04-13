@@ -1,7 +1,0 @@
-teacherinfor.html ok
-teacher.html      wait
-single.html	  wait
-course.html	  wait
-morelessons.html  wait
-index.html	  wait
-...18%...

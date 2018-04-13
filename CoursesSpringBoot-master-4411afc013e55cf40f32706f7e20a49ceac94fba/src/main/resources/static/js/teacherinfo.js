@@ -45,7 +45,7 @@ $(document).ready(function () {
         for(let i of data.data.courses){
           $('.classes').append(`
             <li>
-              <a href="course.html/?id=${i.id}" title="">${i.name}</a>
+              <a href="/course?id=${i.id}" title="">${i.name}</a>
             </li>
           `)
         }

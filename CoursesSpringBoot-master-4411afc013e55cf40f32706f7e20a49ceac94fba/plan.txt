@@ -1,0 +1,8 @@
+teacherinfor.html ok
+teacher.html      ok
+single.html	  ok
+course.html	  ok
+morelessons.html  ok
+index.html	  ok
+...100%...
+over

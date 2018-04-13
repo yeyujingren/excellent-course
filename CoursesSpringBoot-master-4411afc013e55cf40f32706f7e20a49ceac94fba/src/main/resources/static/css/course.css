@@ -60,7 +60,11 @@ a{
 .div-body .r-main .group .c-detail .c-points{
   padding-top: 20px;
 }
-.div-body .r-main .group .c-detail .c-points ul li{
+.c-detail .c-points .c-ul{
+  height: auto;
+}
+.c-detail .c-points .c-ul li{
+  font-size: 16px;
   list-style: none;
   float: left;
   margin-left: 5%;

@@ -7,6 +7,7 @@ $(document).ready(function () {
         return null;
     }
     var id = GetQueryString('id');
+    console.log(id)
 
     $.ajax({
       url:'/getHomepageInfo',
@@ -39,7 +40,7 @@ $(document).ready(function () {
         alert(data.message)
       }
     }
-    console.log('1')
+    // console.log('1')
     // get morelessons data
     $.ajax({
         url:'/getCoursesByCourseGroup ',
@@ -51,6 +52,7 @@ $(document).ready(function () {
               id:id
           }
       ),
+        contentType:"application/json",
       timeout: 5000,
       async: false,
       error: function () {console.log('请求失败！')},

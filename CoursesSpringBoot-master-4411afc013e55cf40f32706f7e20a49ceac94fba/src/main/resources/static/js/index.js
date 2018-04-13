@@ -70,6 +70,13 @@ $(document).ready(function () {
                     `)
               }
         for (let x of data.data[i].ordinaryCourse) {
+            let url;
+            let picture_url=x.picture.url;
+            if(picture_url == null){
+                url=''
+            }else{
+                url = picture_url
+            }
                   // console.log(i)
                   $('.r-main').find(`.div-${i}`).append(`
                       <div class="col-md-4 courses">

@@ -46,9 +46,9 @@ $(document).ready(function () {
 
     // 获取课程详情
     $.ajax({
-        // url:'/getCourseDetail',
-        url:'https://easy-mock.com/mock/5a1bc24a9144e669fc6e7744/course/courses',
-        type: 'GET',
+        url:'/getCourseDetail',
+        // url:'https://easy-mock.com/mock/5a1bc24a9144e669fc6e7744/course/courses',
+        type: 'POST',
         timeout: 5000,
         dataType: 'json',
         async:false,
@@ -56,14 +56,13 @@ $(document).ready(function () {
             id: id
         }),
         contentType: "application/json; charset=utf-8",
-
         success: functionSuccy,
         error: function() {
             console.log('获取课程数据失败！')
         }
     })
     function functionSuccy (data) {
-        console.log(data)
+        // console.log(data)
         if(data.success){
             $('.group .c-title').html(data.data.course.name);
             $('.group .c-pic img').attr('href',data.data.picture.url)
@@ -72,8 +71,9 @@ $(document).ready(function () {
             $('.c-detail .c-infor').html(data.data.course.introduction)
             // 加载知识点
             for(let i of data.data.knowledgePoints){
-                $('c-points').prepend(`<li index='${i.id}'><a href="javascript:void(0);" title="">${i.content}</a></li>`)
+                $('#c-points').append(`<li data-toggle="modal" data-target="#myModal" index='${i.id}'><a href="javascript:void(0);" title="">${i.content}</a></li>`)
             }
+            $('#c-points').append("<div class='clear'></div>")
             // 加载章节
             for (let i in data.data.chapters) {
                 $('.subNavBoxTwo').append(`<div class="subNav">${data.data.chapters[i].chapter.number}:${data.data.chapters[i].chapter.name}</div><ul class="navContent ul-${i}"></ul> `)
@@ -101,6 +101,46 @@ $(document).ready(function () {
             alert(data.message)
         }
     }
+
+    // 获取知识点详情
+    $('#c-points li').on('click',function () {
+        let point = $(this).attr('index')
+        // alert(1)
+        // alert(point)
+        $.ajax({
+          url:'/getUnitsByKnowledgePoint',
+          timeout:5000,
+          type:'POST',
+          dataType:'json',
+          async:false,
+          data:JSON.stringify(
+              {
+                  id:point
+              }
+          ),
+          contentType: "application/json",
+          error: function () {
+            $('#myModal iframe').css('display','none')
+            $('#myModal .modal-body div').css('display','block')
+            $('#myModal .modal-body div').html('<center>获取失败</center>')
+          },
+          success: successFun
+        })
+        function successFun (data){
+          if(data.success){
+            $('#myModal iframe').css('display','none')
+            $('#myModal .modal-body div').css('display','block')
+              $('#myModal .modal-body div').html(' ')
+            for(let i of data.data){
+              $('#myModal .modal-body div').append(`<li style="list-style:none;margin-left:20px;margin-top:20px;font-size:16px;"><a href="single.html?id=${i.unit.id }">${ i.course.name }&nbsp;&nbsp;${ i.chapter.number } &nbsp;&nbsp; ${ i.unit.number } &nbsp;&nbsp; ${ i.unit.name } </a></li>`);
+            }
+          }else{
+            $('#myModal iframe').css('display','none')
+            $('#myModal .modal-body div').css('display','block')
+            $('#myModal .modal-body div').html('<center>'+data.message+'</center>')
+          }
+        }
+      })
 
 
 

@@ -66,7 +66,7 @@ $(document).ready(function () {
     })
 
     function sucFun (data) {
-      console.log(data)
+      // console.log(data)
       if(data.success){
         $('.c-name').append(`${data.data.chapter.number}&nbsp;&nbsp;${data.data.unit.number}:${data.data.unit.name}`)
         if(data.data.videos.length == 0){
@@ -74,7 +74,7 @@ $(document).ready(function () {
         }else{
           $('video').attr('src',data.data.videos[0].video.url)
         }
-        
+
         for(let i of data.data.offices){
           $('.information .stu').append(`
             <li>
@@ -84,8 +84,8 @@ $(document).ready(function () {
         }
         for(let x in data.data.knowledgePoints){
           $('.information .point').append(`
-            <li>
-              <a href="javastript:void(0);" index="data.data.knowledgePoints[x].id" title="">${data.data.knowledgePoints[x].content}</a>
+            <li index="${ data.data.knowledgePoints[x].id}" data-toggle="modal" data-target="#myModal">
+              <a href="javastript:void(0);"  title="">${data.data.knowledgePoints[x].content}</a>
             </li>
             `)
         }
@@ -99,21 +99,21 @@ $(document).ready(function () {
         //   }else{
         //     url=' '
         //   }
-        //   $('.s-list ul').append(`
-        //     <li>
-        //         <div class="col-md-6">
-        //           <a href="/single?id=${y.unit.id}" title="">
-        //             <img src="${url}" />
-        //           </a>
-        //         </div>
-        //         <div class="col-md-6 detail">
-        //           <a href="/single?id=${y.unit.id}" title="">${y.unit.number}</a>
-        //           <p class="author">${y.unit.name}</p>
-        //           <p class="views">${y.unit.content}</p>
-        //         </div>
-        //       </li>
-        //     `)
-        // }
+          $('.s-list ul').append(`
+            <li>
+                <div class="col-md-6">
+                  <a href="/single?id=${y.unit.id}" title="">
+                    <img src="/pic/20180308134636349.jpg" />
+                  </a>
+                </div>
+                <div class="col-md-6 detail">
+                  <a href="/single?id=${y.unit.id}" title="">${y.unit.number}</a>
+                  <p class="author">${y.unit.name}</p>
+                  <p class="views">${y.unit.content}</p>
+                </div>
+              </li>
+            `)
+        }
         $('.s-list ul').append(`<div class="clear"></div>`)
       }else{
         alert(data.message)
@@ -127,28 +127,32 @@ $(document).ready(function () {
         type:'POST',
         dataType:'json',
         async:false,
-        data:{
-          id:point
-        },
+        data:JSON.stringify(
+            {
+                id:point
+            }
+        ),
         contentType: "application/json",
         error: function () {
           $('#myModal iframe').css('display','none')
-          $('#myModal modal-body div').css('display','block')
-          $('#myModal modal-body div').html('<center>获取失败</center>')
+          $('#myModal .modal-body div').css('display','block')
+          $('#myModal .modal-body div').html('<center>获取失败</center>')
         },
         success: successFun
       })
       function successFun (data){
+        console.log(data)
         if(data.success){
           $('#myModal iframe').css('display','none')
-          $('#myModal modal-body div').css('display','block')
+          $('#myModal .modal-body div').css('display','block')
+            $('#myModal .modal-body div').html(' ')
           for(let i of data.data){
-            $('#myModal modal-body div').append(`<li style="list-style:none;margin-left:20px;margin-top:20px;font-size:16px;"><a href="single.html?id=${i.unit.id}">${i.course.name}&nbsp;&nbsp;${i.chapter.number}&nbsp;&nbsp;${i.unit.number}&nbsp;&nbsp;${i.unit.name}</a></li>`)
+            $('#myModal .modal-body div').append(`<li style="list-style:none;margin-left:20px;margin-top:20px;font-size:16px;"><a href="single.html?id=${i.unit.id}">${i.course.name}&nbsp;&nbsp;${i.chapter.number}&nbsp;&nbsp;${i.unit.number}&nbsp;&nbsp;${i.unit.name}</a></li>`)
           }
         }else{
           $('#myModal iframe').css('display','none')
-          $('#myModal modal-body div').css('display','block')
-          $('#myModal modal-body div').html('<center>'+data.message+'</center>')
+          $('#myModal .modal-body div').css('display','block')
+          $('#myModal .modal-body div').html('<center>'+data.message+'</center>')
         }
       }
     })
