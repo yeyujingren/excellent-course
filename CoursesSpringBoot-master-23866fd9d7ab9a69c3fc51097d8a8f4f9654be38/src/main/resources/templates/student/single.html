@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>课程播放页</title>
+  <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+  <link href="css/dashboard.css" rel="stylesheet" />
+  <link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+  
+  <link href="css/comment.css" rel="stylesheet" />
+  <link href="css/c-style.css" rel="stylesheet" />
+  <link href="css/single.css" rel="stylesheet" />
+  <!-- <link href="css/lrtk.css" rel='stylesheet' type='text/css' media="all" /> -->
+  <!--[if !IE]><!--> <script src="js/jquery-3.2.1.min.js"></script> <!--<![endif]-->
+  <!--[if IE]> <script src="js/jquery-1.11.3.min.js"></script> <![endif]--> 
+  <script src="js/jquery.cookie.js"></script>
+  <!--<script src="js/video.min.js"></script>-->
+  <script src="js/md5.js"></script>
+  <script src="js/jquery.flexText.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/addLogin.js"></script>
+  <script src="js/commentOne.js"></script>
+  <script src="js/commentTwo.js"></script>
+  <script src="js/commentThree.js"></script>
+  <script src="js/commentFor.js"></script>
+  <script src="js/commentFive.js"></script>
+  <script src="js/commentSix.js"></script>
+    <script src="js/box.js"></script>
+  <script src="js/single.js"></script>
+</head>
+<body>
+  <!-- header begin -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+         
+          <a class="navbar-brand" href="/home"><h1><img src="images/logo1.png" alt="" /></h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="top-search">
+            <form class="navbar-form navbar-right">
+              <input type="text" class="form-control" placeholder="Search...">
+              <input type="submit" value=" ">
+            </form>
+          </div>
+            <div class="header-top-right user hiddens">
+                <div class="file">
+                    <a href="teacher.html">教师团队</a>
+                </div>
+                <div class="signin">
+                    <a href="javascript:void(0);" class="play-icon popup-with-zoom-anim user-oper li " data-toggle="modal" data-target="#myModalSign">注册</a>
+                </div>
+                <div class="signin">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#myModaLogin" class="play-icon popup-with-zoom-anim user-oper li user-dl">登录</a>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-top-right person hiddens">
+                <div class="file">
+                    <a href="teacher.html">教师团队</a>
+                </div>
+                <p></p>
+                <div class="signin">
+                    <a href="javascript:void(0);" class="play-icon popup-with-zoom-anim user-oper li logout">注销</a>
+                </div>
+            </div>
+      </div>
+    <div class="clearfix"> </div>
+  </nav>
+  <!-- header end -->
+
+  <!-- body begin -->
+  <div class="div-body">
+    <div class="l-navbar">
+      <div class="subNavBox">
+        
+      </div>
+    </div>
+    <div class="r-main">
+      <div class="group">
+        <p class="c-title c-name"></p>
+        <div style="float:left;width: 79%;">
+          <div class="show">
+            <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none" width="100%" height="500" data-setup='{}'>
+                <source src="" />
+            </video>
+          </div>
+          <div class="c-intro">
+            <p class="h4">
+              简介
+            </p>
+            <p class="classinfor">
+
+            </p>
+          </div>
+          <div class="comment">
+            <!--*********隔离区***************-->
+            <div class="commentAll">
+              <p class="c-title">所有评论</p>
+                <!--评论区域 begin-->
+                <div class="reviewArea clearfix">
+                    <textarea class="content comment-input" placeholder="有什么想说的就写下来吧&hellip;" onkeyup="keyUP(this)"></textarea>
+                    <a href="javascript:;" class="plBtn">评论</a>
+                </div>
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show" id="commit-list">
+                </div>
+                <!--回复区域 end-->
+                <div class="fy" style="padding-left: 50px;margin-top: 20px;">
+                    <button type="button" class="btn btn-primary first-page">&lt;&lt;</button>
+                    <button type="button" class="btn btn-primary prev">&lt;</button>
+                    <span></span>
+                    <button type="button" class="btn btn-primary next">&gt;</button>
+                    <button type="button" class="btn btn-primary last-pages">&gt;&gt;</button>
+                </div>
+            </div>
+            <!--*********隔离区***************-->
+        </div>
+        </div>
+        
+        <div class="information">
+          <p>资料下载</p>
+          <ul class="stu">
+
+          </ul>
+          <p>相关知识点</p>
+          <ul class="point">
+
+          </ul>
+        </div>
+        <div class="clear"></div>
+        
+          
+      </div> 
+      <div class="r-list">
+        <div class="section">
+          <p>课程章节</p>
+          <div class="s-list">
+            <ul>
+
+
+            </ul>
+          </div>
+        </div>
+        <div class="works">
+          <p>优秀作品展示</p>
+          <ul>
+
+          </ul>
+              
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="about">
+        <center>
+          <span>关于我们</span>
+          <span>联系我们</span>
+          <span>关于网站</span>
+          <span>网站建议</span>
+        </center>
+
+      </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+  <!-- body end -->
+
+  <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 60%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" style="height: 500px;">
+                    <div style="width: 100%; height: 100%; border: 0px none;display: none;">
+                    </div>
+                    <iframe name='' frameborder='0' style="width: 100%; height: 100%; border: 0px none;" src=""></iframe>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+</body>
+</html>

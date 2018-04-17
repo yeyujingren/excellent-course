@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>管理员后台</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="由明理苑成员完成">
+    <meta name="keywords" content="合工大,课程网站,精品课程">
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="lib/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" href="lib/sidebar.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="lib/global.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+</head>
+
+<body>
+<header class="header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-right ">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span>管理员 <i class="caret"></i></span>
+                    </a>
+                    <ul class="dropdown-menu  dropdown-menu-right">
+                        <li class="dropdown-header text-center">账户</li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-fw pull-right"></i> 详情
+                            </a>
+                            <a data-toggle="modal" href="#modal-user-settings">
+                                <i class="fa fa-cog fa-fw pull-right"></i> 设置
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-sign-out-alt pull-right"></i> 注销</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="section">
+    <div class="maincontent">
+        <div class="container">
+            <div class="admin-title">
+                <h1>欢迎来到管理员后台
+                    <small>您可以在这里执行操作</small>
+                </h1>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">课程主页</h4>
+                </div>
+                <div class="panel-body " id="welcomeBody">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+
+                                <input type="text" id="courseId" value=""
+                                       style="display: none;"/>
+                                <label for="inCourseGroup">所属课程组</label>
+                                <input class="form-control" disabled type="text" name="" id="inCourseGroup" value=""/>
+                            </div>
+                            <div class="col-md-12">
+                                <label>课程名称</label>
+                                <input class="form-control" disabled type="text" name="" id="CourseName" value=""/>
+                            </div>
+                            <div class="col-md-12">
+                                <label>课程学分</label>
+                                <input class="form-control" disabled type="text" name="" id="CourseScore" value=""/>
+                            </div>
+                            <div class="col-md-12">
+                                <label>负责教师</label>
+                                <input class="form-control" disabled type="text" name="" id="CourseTeacher" value=""/>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="CourseNumber">课程编号</label>
+                                <input class="form-control" disabled type="text" name="CourseNumber"
+                                       id="CourseNumber"
+                                       value=""/>
+                            </div>
+                            <div class="col-md-12">
+                                <label>课程类型</label>
+                                <input class="form-control" disabled type="text" name="" id="CourseType" value=""/>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>课程学时</label>
+                                <input class="form-control" disabled type="text" name="" id="CourseTime" value=""/>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="CourseDetails">课程介绍</label>
+                                <textarea class="form-control" rows="7" name="" id="CourseDetails" disabled>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row" onclick="uploadCoursePicture()">
+                                <p>上传或修改图片</p>
+                                <form id="uploadForm" method="post" enctype="multipart/form-data">
+                                    <input style="display: none" type="file" id="file" name="file" onchange="upload()"/>
+                                </form>
+                                <img id="showPicture" src="" style="width:100%;height:100%;max-height: 225px;"
+                                     alt="Logo">
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <p>资料列表(课程大纲、教学日历、学习指南、考核方式与标准)</p>
+                                <table class="table table-bordered" id="officeTable">
+                                    <thead>
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>名称</td>
+                                        <td>描述</td>
+                                        <td>演示</td>
+                                        <td>删除</td>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                            </div>
+                            <div class="row">
+                                <form id="uploadOfficeForm" method="post" enctype="multipart/form-data">
+                                    <input style="display: none" type="file" id="officeFile" name="file" onchange="uploadOffice()"/>
+                                </form>
+                                <input type="button" onclick="selectOffice()" value="点此上传" class="btn btn-primary btn-block"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="content">
+
+                        <div id="disappare" style="display:none;">
+                            <h2 class="onupdate" style="display: none">更新中...</h2>
+                            <h3 class="update-success" style="display: none">更新成功!</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="lib/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="js/welcome.js"></script>
+<script src="lib/datatable/js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="lib/datatable/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<!-- <script src="js/jquery.min.js"></script> -->
+</body>
+
+</html>

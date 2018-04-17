@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>教师团队</title>
+  <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+  <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/style.css" rel='stylesheet' type='text/css'/>
+  <link href="css/teacher.css" rel="stylesheet">
+  <!--[if !IE]><!--> <script src="js/jquery-3.2.1.min.js"></script> <!--<![endif]-->
+  <!--[if IE]> <script src="js/jquery-1.11.3.min.js"></script> <![endif]--> 
+  <script src="js/jquery.cookie.js"></script>
+  <script src="js/md5.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/addLogin.js"></script>
+  <script src="js/teacher.js"></script>
+</head>
+<body>
+  <!-- header begin -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+         
+          <a class="navbar-brand" href="/home"><h1><img src="images/logo1.png" alt="" /></h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="top-search">
+            <form class="navbar-form navbar-right">
+              <input type="text" class="form-control" placeholder="Search...">
+              <input type="submit" value=" ">
+            </form>
+          </div>
+          <div class="header-top-right user hiddens">
+            <div class="file">
+              <a href="teacher.html">教师团队</a>
+            </div>
+            <div class="signin">
+              <a href="javascript:void(0);" class="play-icon popup-with-zoom-anim user-oper li " data-toggle="modal" data-target="#myModalSign">注册</a>
+            </div>
+            <div class="signin">
+              <a href="javascript:void(0);" data-toggle="modal" data-target="#myModaLogin" class="play-icon popup-with-zoom-anim user-oper li user-dl">登录</a>
+
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+          <div class="header-top-right person hiddens">
+            <div class="file">
+              <a href="teacher.html">教师团队</a>
+            </div>
+            <p></p>
+            <div class="signin">
+              <a href="javascript:void(0);" class="play-icon popup-with-zoom-anim user-oper li logout">注销</a>
+            </div>
+          </div>
+      </div>
+    <div class="clearfix"> </div>
+  </nav>
+  <!-- header end -->
+
+  <!--body begin-->
+  <div class="teachers">
+    <h3>
+      师资队伍
+    </h3>
+    <div class="line"></div>
+    <div class="g-teachers" >
+
+    </div>
+  </div>
+  <!--body end-->
+
+  <!--footer begin-->
+  <div class="about">
+    <center>
+      <span>关于我们</span>
+      <span>联系我们</span>
+      <span>关于网站</span>
+      <span>网站建议</span>
+    </center>
+    <div class="copy">
+      Copyright © 2018.合肥工业大学管理学院 版权所有
+    </div>
+        
+  </div>
+  <!--footer end-->
+
+</body>
+</html>

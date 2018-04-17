@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>管理员后台界面</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="由明理苑成员完成">
+    <meta name="keywords" content="合工大,课程网站,精品课程">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="lib/global.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="lib/datatable/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="lib/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+</head>
+<body class="bg-gray">
+<header class="header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-right ">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span>管理员 <i class="caret"></i></span>
+                    </a>
+                    <ul class="dropdown-menu  dropdown-menu-right">
+                        <li class="dropdown-header text-center">账户</li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-fw pull-right"></i> 详情
+                            </a>
+                            <a data-toggle="modal" href="#modal-user-settings">
+                                <i class="fa fa-cog fa-fw pull-right"></i> 设置
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-sign-out-alt pull-right"></i> 注销</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="maincontent">
+    <div class="container">
+       <br>
+
+        <div class="row">
+            <div class="col-md-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="kechengxiangqing">
+                        <p>课程详情</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="line-frame">
+                            <div class="col-md-6">
+                                <select class="form-control" id="unitNumber" name="">
+                                    <option value="">请选择本课序号</option>
+                                    <option value="第1课">第1课</option>
+                                    <option value="第2课">第2课</option>
+                                    <option value="第3课">第3课</option>
+                                    <option value="第4课">第4课</option>
+                                    <option value="第5课">第5课</option>
+                                    <option value="第6课">第6课</option>
+                                    <option value="第7课">第7课</option>
+                                    <option value="第8课">第8课</option>
+                                    <option value="第9课">第9课</option>
+                                    <option value="第10课">第10课</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input id="unitId" VALUE="" style="display:none;" />
+                                    <span class="input-group-addon" id="xulun">标题</span>
+                                    <input id="unitName" type="text" class="form-control" placeholder=""
+                                           aria-describedby="xunlun">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea id="unitContent" class="form-control" rows="8"></textarea>
+                                <button onclick="updateUnit()" class="btn btn-primary btn-block">更新</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>资料列表</p>
+                    </div>
+
+                    <table class="table table-bordered" id="officeTable">
+                        <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>名称</td>
+                            <td>描述</td>
+                            <td>演示</td>
+                            <td>删除</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="em-layout">
+                    <div class="em-add is-primary" onclick="uploadOfficeSelect()">
+                        <h2 style="font-size:4em">+</h2>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form id="uploadOfficeForm" method="post" enctype="multipart/form-data">
+                    <input style="display: none" type="file" id="file" name="file" onchange="uploadOffice()" />
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>视频列表</p>
+                    </div>
+
+                    <table class="table table-bordered" id="videoTable">
+                        <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>描述</td>
+                            <td>播放</td>
+                            <td>删除</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-1">
+                <div class="em-layout">
+                    <div class="em-add is-primary" onclick="uploadVideoSelect()">
+                        <h2 style="font-size: 4em">+</h2>
+                    </div>
+                </div>
+                <div>
+                    <form id="uploadVideoForm" method="post" enctype="multipart/form-data">
+                        <input style="display: none" type="file" id="videoFile" name="videoFile"
+                               onchange="uploadVideo()" />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!--添加知识点-->
+        <div class="row">
+            <div class="col-md-12"><label for="KPList">添加知识点</label></div>
+
+            <div class="col-md-11"><input  class="form-control" type="text" id="KPList" /></div>
+            <div class="col-md-1">
+                <button onclick="addKPs()" class="btn btn-primary">添加</button>
+            </div>
+
+
+        </div>
+
+</section>
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="lib/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="js/unitDetail.js"></script>
+<script type="text/javascript" src="lib/datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/datatable/js/dataTables.bootstrap.js"></script>
+</body>
+
+</html>

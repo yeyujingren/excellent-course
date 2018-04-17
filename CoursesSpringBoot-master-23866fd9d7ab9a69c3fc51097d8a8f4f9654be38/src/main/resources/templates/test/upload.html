@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <script type="text/javascript">
+
+        function upload() {
+
+            var formData = new FormData($( "#uploadForm" )[0]);
+
+            console.log("ddddd");
+
+            $.ajax({
+                url: '/file/pic',
+                type: 'post',
+                timeout: 5000,
+                contentType: false,
+                processData: false,
+                async: false,
+                cache: false,
+                data:formData,
+            })
+
+                .done(function (data) {
+
+                    console.log(data);
+                    //$("#showPicture").css("background-image","url("+data.data.url+")")
+                    $("#showPicture").attr("src",data.data.url);
+                    bindingFunction(data.data.id);
+                    //35da96aaa8244304a87d8dc92dfae4be
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
+        }
+        
+        function bindingFunction(picture_id) {
+            $.ajax({
+                url: '/uploadCoursePicture',
+                type: 'post',
+                dataType: 'json',
+                timeout: 5000,
+                contentType: 'application/json; charset=UTF-8',
+                cache: false,
+                data:JSON.stringify({
+                    "course_id": "35da96aaa8244304a87d8dc92dfae4be",
+                    "picture_id":picture_id.toString()
+                }),
+            })
+
+                .done(function (data) {
+
+                    alert(data.message);
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }
+
+        function uploadCoursePicture() {
+            var f = document.getElementById("file");
+            f.click();
+        }
+    </script>
+
+
+</head>
+<body>
+<form id="uploadForm" method="post" enctype="multipart/form-data">
+    <input style="display: none" type="file" id="file" name="file" onchange="upload()"/>
+</form>
+<!--<img id="showPicture" src="" width="200px" height="280px"/>-->
+<div style="border:2px solid;width:200px;height: 280px;" onclick="uploadCoursePicture()">
+    <SPAN>请上传课程图片</SPAN>
+    <img id="showPicture" src="" width="200px" height="280px"/>
+
+</div>
+<script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+
+</body>
+
+</html>
