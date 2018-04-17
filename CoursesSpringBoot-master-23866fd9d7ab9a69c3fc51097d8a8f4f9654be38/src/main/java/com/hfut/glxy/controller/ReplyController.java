@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,6 +62,8 @@ public class ReplyController {
         try {
             //String sid = "2015213749";
             reply.setStudentId(sid);
+            reply.setCreateTime(new Date());
+            reply.setUpdateTime(new Date());
             if (replyService.insert(reply)) {
                 Reply rep = replyService.getReplyById(reply.getId());
                 //更新评论回复数

@@ -6,23 +6,27 @@ $(document).ready(function () {
         var oThis = $(this);
         //获取输入内容
         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-        // $.getJSON("https://easy-mock.com/mock/5a1bc24a9144e669fc6e7744/course/commit", function(data) {
-        $.ajax({
-            url:'/reply',
-            type: 'POST',
-            dataType: 'json',
-            timeout: 5000,
-            async: false,
-            data: JSON.stringify({
-                content: oHfVal,
-                commentId: parseInt($('.pl-id').html())
-            }),
-            contentType: 'application/json; charset=UTF-8',
-            beforeSend: LoadFunction,
-            success: succyFunction,
-            error: erryFunction
+        if(oHfVal == null){
+            alert('亲，您还没有输入回复内容哟！')
+        }else{
+            $.ajax({
+                url:'/reply',
+                type: 'POST',
+                dataType: 'json',
+                timeout: 5000,
+                async: false,
+                data: JSON.stringify({
+                    content: oHfVal,
+                    commentId: parseInt($('.pl-id').html())
+                }),
+                contentType: 'application/json; charset=UTF-8',
+                beforeSend: LoadFunction,
+                success: succyFunction,
+                error: erryFunction
 
-        })
+            })
+        }
+
 
         function LoadFunction() {
            // console.log("发表中.....")

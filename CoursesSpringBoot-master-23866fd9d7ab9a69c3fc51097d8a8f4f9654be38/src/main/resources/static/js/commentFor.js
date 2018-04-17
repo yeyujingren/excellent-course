@@ -6,7 +6,6 @@ $(document).ready(function () {
         var oThis = $(this);
         //获取输入内容
         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-        // $.getJSON("https://easy-mock.com/mock/5a1bc24a9144e669fc6e7744/course/commit", function(data) {
         $.ajax({
             url:'/reply',
             type: 'POST',

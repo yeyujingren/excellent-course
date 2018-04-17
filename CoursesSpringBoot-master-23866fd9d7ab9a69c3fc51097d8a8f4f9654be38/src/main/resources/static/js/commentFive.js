@@ -61,17 +61,7 @@ $(document).ready(function() {
         }
 
         var zNum = $(this).find('.z-num').html();
-        if ($(this).is('.date-dz-z-click')) {
-            zNum--;
-            $(this).removeClass('date-dz-z-click red');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').removeClass('red');
-        } else {
-            zNum++;
-            $(this).addClass('date-dz-z-click');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').addClass('red');
-        }
+
     })
 
     function changeLike(id, type) {
@@ -83,7 +73,23 @@ $(document).ready(function() {
             timeout: 5000,
             beforeSend: function() {},
             error: function() {},
-            success: function(data) {}
+            success: function(data) {
+                if(data.success){
+                    if ($(this).is('.date-dz-z-click')) {
+                        zNum--;
+                        $(this).removeClass('date-dz-z-click red');
+                        $(this).find('.z-num').html(zNum);
+                        $(this).find('.date-dz-z-click-red').removeClass('red');
+                    } else {
+                        zNum++;
+                        $(this).addClass('date-dz-z-click');
+                        $(this).find('.z-num').html(zNum);
+                        $(this).find('.date-dz-z-click-red').addClass('red');
+                    }
+                }else {
+                    alert(data.message)
+                }
+            }
         })
     }
 })

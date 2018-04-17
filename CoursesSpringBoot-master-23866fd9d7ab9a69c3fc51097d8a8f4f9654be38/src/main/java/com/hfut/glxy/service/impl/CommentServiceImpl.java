@@ -90,15 +90,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     public PageInfo<Comment> getChapterComments(int pageNum, String sid, String cid) {
         PageHelper.startPage(pageNum, 5);
         List<Comment> comments = commentMapper.findByChapterId(cid);
-        if (sid != null) {
+
             //个性化
             comments.forEach(it -> {
                 Student stu = studentMapper.findNameAndImgById(it.getStudentId());
                 it.setAuthor(stu.getName());
                 it.setImg(stu.getImg());
+                if (sid != null) {
                 it.setIsAgreed(commentMapper.isAgreed(sid, it.getId()) == 1);
+                }
             });
-        }
+
 
         return new PageInfo<>(comments);
     }

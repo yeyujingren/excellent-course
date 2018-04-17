@@ -16,7 +16,7 @@ $(document).ready(function () {
             $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding', '6px 15px');
             //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
             //input框自动聚焦
-            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
+            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').attr('placeholder',fhN).focus().attr('placeholder',fhN);
         }
         /*else {
                     $(this).addClass('hf-con-block');

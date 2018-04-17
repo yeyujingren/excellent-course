@@ -85,6 +85,7 @@ public class CommentController {
 
         comment.setStudentId(studentId);
         comment.setUpdateTime(new java.sql.Date(System.currentTimeMillis()));
+        comment.setCreateTime(new java.sql.Date(System.currentTimeMillis()));
 
         try {
             if (commentService.insert(comment)) {

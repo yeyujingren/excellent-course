@@ -2,7 +2,7 @@
 $(document).ready(function() {
     // 点击页码，上下页加载评论
     $('.fy').on('click', 'input', function() {
-        let id = $(this).val()
+        var id = $(this).val()
         $('.fy input').removeClass('active')
         $(this).addClass('active')
         link(id)
@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     $('.fy .next').on('click', function() {
         // alert('aha')
-        let id = parseInt($('.active').val()) + 1
+        var id = parseInt($('.active').val()) + 1
         // alert(id)
         $('.fy input').removeClass('active')
         $('.fy .btn-id-' + id).addClass('active')

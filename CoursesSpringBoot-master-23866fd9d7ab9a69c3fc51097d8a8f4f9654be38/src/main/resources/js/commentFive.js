@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     // 点赞
     $('.comment-show').on('click', '.date-dz-z', function() {
-        let id = $(this).attr('index')
+        var id = $(this).attr('index')
         // console.log(id)
 
         if ($(this).is('.date-dz-z-click')) {
@@ -83,7 +83,14 @@ $(document).ready(function() {
             timeout: 5000,
             beforeSend: function() {},
             error: function() {},
-            success: function(data) {}
+            success: function(data) {
+                console.log(data)
+                if(data.success){
+
+                }else{
+                    alert(data.message)
+                }
+            }
         })
     }
 })
