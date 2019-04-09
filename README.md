@@ -1,2 +1,2 @@
 # excellent-course
-website for teacher
+大学生精品课程网站，前端界面
